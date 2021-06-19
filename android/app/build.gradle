@@ -128,12 +128,19 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+
+packagingOptions {
+    pickFirst '**/*.so'
+}
+
     defaultConfig {
         applicationId "com.appsignature"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
+
     }
     splits {
         abi {
