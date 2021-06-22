@@ -1,8 +1,9 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
+import {View, Text, TouchableOpacity,PermissionsAndroid, StyleSheet, Image, Platform} from 'react-native';
 import DocumentPicker from 'react-native-document-picker';
 import {useState} from 'react';
 import Steper from './Steper';
+import { useEffect } from 'react/cjs/react.development';
 
 const PickPdf = ({navigation}) => {
   const [pdf, setPdf] = useState(null);
@@ -29,6 +30,38 @@ const PickPdf = ({navigation}) => {
       }
     }
   };
+
+
+  useEffect(()=>{
+    requestStoragePermission()
+
+  },[])
+
+  const requestStoragePermission = async () => {
+    try {
+          const granted = await PermissionsAndroid.request(
+            PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+            {
+              title: "Storage Permission",
+             message: "requires Storage Permission",
+             buttonNegative: "Cancel",
+             buttonPositive: "OK",
+          },
+       );
+        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+          alert('gennn')
+           return true;
+
+
+       } else {
+         return false;
+       }
+       } catch (err) {
+          console.warn(err);
+            return false;
+       }
+    };
+
 
   return (
     <View style={[styles.constiner]}>
