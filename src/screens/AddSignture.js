@@ -122,18 +122,15 @@ export default AddSignture = ({navigation, route}) => {
       const signatureImage = await pdfDoc.embedPng(signatureArrayBuffer);
       if (Platform.OS == 'ios') {
         firstPage.drawImage(signatureImage, {
-          x: (pageWidth * (x - 12)) / Dimensions.get('window').width,
-          y: pageHeight - (pageHeight * (y + 12)) / 540,
+          x:x,
+          y:y,
           width: 120,
           height: 120,
         });
       } else {
         firstPage.drawImage(signatureImage, {
-          x: (firstPage.getWidth() * x) / pageWidth,
-          y:
-            firstPage.getHeight() -
-            (firstPage.getHeight() * y) / pageHeight -
-            25,
+          x: x,
+          y:y,
           width: 120,
           height: 120,
         });
@@ -217,10 +214,20 @@ export default AddSignture = ({navigation, route}) => {
       ) : (
         fileDownloaded && (
           <View>
-
             {filePath ? (
+              <TouchableOpacity
+              activeOpacity={.8}
+                onPress={(ev) => {
+                //console.log( ev.nativeEvent.layout.height);
+                  handleSingleTap(
+                    1,
+                    ev.nativeEvent.pageX,
+                    ev.nativeEvent.pageY,
+                  );
+                }}
+                style={[styles.pdf]}>
                 <Pdf
-                  onPageSingleTap={(page, x, y) => handleSingleTap(page, x, y)}
+                //  onPageSingleTap={(page, x, y) => handleSingleTap(page, x, y)}
                   minScale={1.0}
                   maxScale={1.0}
                   scale={1.0}
@@ -229,6 +236,7 @@ export default AddSignture = ({navigation, route}) => {
                   enablePaging={true}
                   source={{uri: filePath}}
                   usePDFKit={false}
+               //   onPageChanged={(p) => alert(p)}
                   onLoadComplete={(
                     numberOfPages,
                     filePath,
@@ -239,7 +247,7 @@ export default AddSignture = ({navigation, route}) => {
                   }}
                   style={styles.pdf}
                 />
-            
+              </TouchableOpacity>
             ) : (
               <View style={styles.button}>
                 <Text style={styles.buttonText}>جاري اضافة التوقيع....</Text>
@@ -341,7 +349,7 @@ const styles = StyleSheet.create({
   },
   pdf: {
     width: Dimensions.get('window').width,
-    height: 540,
+    height: height * 0.67,
     alignSelf: 'center',
   },
   button: {

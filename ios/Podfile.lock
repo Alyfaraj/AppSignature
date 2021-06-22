@@ -249,8 +249,10 @@ PODS:
   - React-jsinspector (0.63.4)
   - react-native-document-picker (5.1.0):
     - React-Core
-  - react-native-pdf (6.2.2):
-    - React-Core
+  - react-native-pdf (5.1.7):
+    - React
+  - react-native-progress-bar-android (1.0.4):
+    - React
   - react-native-progress-view (1.2.3):
     - React
   - react-native-safe-area-context (3.2.0):
@@ -377,6 +379,7 @@ DEPENDENCIES:
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - react-native-document-picker (from `../node_modules/react-native-document-picker`)
   - react-native-pdf (from `../node_modules/react-native-pdf`)
+  - "react-native-progress-bar-android (from `../node_modules/@react-native-community/progress-bar-android`)"
   - "react-native-progress-view (from `../node_modules/@react-native-community/progress-view`)"
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-signature-capture (from `../node_modules/react-native-signature-capture`)
@@ -452,6 +455,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-document-picker"
   react-native-pdf:
     :path: "../node_modules/react-native-pdf"
+  react-native-progress-bar-android:
+    :path: "../node_modules/@react-native-community/progress-bar-android"
   react-native-progress-view:
     :path: "../node_modules/@react-native-community/progress-view"
   react-native-safe-area-context:
@@ -526,7 +531,8 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 93bd528844ad21dc07aab1c67cb10abae6df6949
   React-jsinspector: 58aef7155bc9a9683f5b60b35eccea8722a4f53a
   react-native-document-picker: 0e3602a4064da040321bafad6848d8b0edcb1d55
-  react-native-pdf: 4b5a9e4465a6a3b399e91dc4838eb44ddf716d1f
+  react-native-pdf: 3c4f29b56f8916c4be96cad5cdb51ed2542c4b5c
+  react-native-progress-bar-android: ce95a69f11ac580799021633071368d08aaf9ad8
   react-native-progress-view: 5816e8a6be812c2b122c6225a2a3db82d9008640
   react-native-safe-area-context: e471852c5ed67eea4b10c5d9d43c1cebae3b231d
   react-native-signature-capture: 73f2077f43a3fae9979b76e8cbf703c735bf44f4
@@ -551,6 +557,6 @@ SPEC CHECKSUMS:
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 8bef3b278284cbcfa59bd3d0196bd9b445d86907
+PODFILE CHECKSUM: 107c070317179fedfa1d54298720094359a9a300
 
 COCOAPODS: 1.10.1
